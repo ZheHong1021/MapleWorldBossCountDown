@@ -2,6 +2,8 @@
   <div class="add-timer-form">
     <h2>新增 BOSS 倒數計時</h2>
     
+    <h3>📋 手動新增 BOSS 計時器</h3>
+    
     <div class="form-row">
       <div class="form-group">
         <label for="boss-select">選擇 BOSS：</label>
@@ -183,6 +185,7 @@ export default {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 
 .form-row {
   display: grid;
@@ -417,6 +420,7 @@ body.light-theme .add-timer-form {
   background: #f8f9fa;
   border-color: #e9ecef;
 }
+
 
 body.light-theme .form-group label {
   color: #495057;

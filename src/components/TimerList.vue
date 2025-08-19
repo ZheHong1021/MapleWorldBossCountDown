@@ -13,6 +13,7 @@
         :timer="timer"
         @reset-timer="$emit('reset-timer', $event)"
         @remove-timer="$emit('remove-timer', $event)"
+        @share-timer="$emit('share-timer', $event)"
       />
     </div>
   </div>
@@ -32,7 +33,7 @@ export default {
       required: true
     }
   },
-  emits: ['reset-timer', 'remove-timer']
+  emits: ['reset-timer', 'remove-timer', 'share-timer']
 }
 </script>
 

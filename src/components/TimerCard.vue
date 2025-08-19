@@ -45,6 +45,10 @@
     </div>
 
     <div class="timer-right">
+      <button @click="$emit('share-timer', timer.id)" class="share-btn btn-modern">
+        <span class="btn-icon">📤</span>
+        <span class="btn-text">分享</span>
+      </button>
       <button @click="$emit('reset-timer', timer.id)" class="reset-btn btn-modern">
         <span class="btn-icon">🔄</span>
         <span class="btn-text">重設</span>
@@ -66,7 +70,7 @@ export default {
       required: true
     }
   },
-  emits: ['reset-timer', 'remove-timer'],
+  emits: ['reset-timer', 'remove-timer', 'share-timer'],
   methods: {
     // 獲取計時器狀態
     getTimerStatus(timer) {
@@ -433,6 +437,15 @@ export default {
 .remove-btn {
   background: linear-gradient(135deg, #f44336, #da190b);
   color: white;
+}
+
+.share-btn {
+  background: linear-gradient(135deg, #42b883, #35495e);
+  color: white;
+}
+
+.share-btn:hover {
+  background: linear-gradient(135deg, #35495e, #42b883);
 }
 
 .remove-btn:hover {

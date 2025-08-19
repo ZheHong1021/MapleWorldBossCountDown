@@ -4,6 +4,7 @@
       :current-time="currentTime"
       :is-dark-theme="isDarkTheme"
       @toggle-theme="toggleTheme"
+      @open-import-dialog="showImportDialog = true"
     />
 
     <h1>🍁 楓之谷世界王倒數計時器</h1>
@@ -17,6 +18,21 @@
       :timers="activeTimers"
       @reset-timer="resetTimer"
       @remove-timer="removeTimer"
+      @share-timer="openShareDialog"
+    />
+
+    <!-- 分享對話框 -->
+    <ShareDialog
+      :is-visible="showShareDialog"
+      :timer-data="selectedTimerForShare"
+      @close="closeShareDialog"
+    />
+
+    <!-- 匯入對話框 -->
+    <ImportDialog
+      :is-visible="showImportDialog"
+      @close="showImportDialog = false"
+      @import="importTimers"
     />
 
     <AppFooter />
@@ -29,6 +45,8 @@ import TopControls from './components/TopControls.vue'
 import TimerForm from './components/TimerForm.vue'
 import TimerList from './components/TimerList.vue'
 import AppFooter from './components/AppFooter.vue'
+import ShareDialog from './components/ShareDialog.vue'
+import ImportDialog from './components/ImportDialog.vue'
 
 export default {
   name: 'App',
@@ -36,13 +54,18 @@ export default {
     TopControls,
     TimerForm,
     TimerList,
-    AppFooter
+    AppFooter,
+    ShareDialog,
+    ImportDialog
   },
   setup() {
     const bosses = ref([])
     const activeTimers = ref([])
     const currentTime = ref('')
     const isDarkTheme = ref(true) // 預設為深色主題
+    const showShareDialog = ref(false)
+    const showImportDialog = ref(false)
+    const selectedTimerForShare = ref(null)
     
     let updateInterval = null
 
@@ -278,15 +301,138 @@ export default {
       }
     })
 
+    // 打開分享對話框
+    const openShareDialog = (timerId) => {
+      const timer = activeTimers.value.find(t => t.id === timerId)
+      if (timer) {
+        selectedTimerForShare.value = timer
+        showShareDialog.value = true
+      }
+    }
+
+    // 關閉分享對話框
+    const closeShareDialog = () => {
+      showShareDialog.value = false
+      selectedTimerForShare.value = null
+    }
+
+    // 匯入計時器從 JSON
+    const importTimers = (importData) => {
+      try {
+        let successCount = 0
+        let errorCount = 0
+        const errors = []
+
+        for (const timerData of importData.timers) {
+          try {
+            // 尋找對應的 BOSS
+            const boss = bosses.value.find(b => 
+              b.id === timerData.bossId || 
+              b.name === timerData.bossName
+            )
+
+            if (!boss) {
+              // 如果找不到對應的 BOSS，創建一個基於匯入資料的 BOSS 物件
+              const importedBoss = {
+                id: timerData.bossId,
+                name: timerData.bossName,
+                minRespawnMinutes: timerData.minRespawnMinutes,
+                maxRespawnMinutes: timerData.maxRespawnMinutes,
+                location: timerData.location
+              }
+              
+              // 使用匯入的 BOSS 資料創建計時器
+              const startTime = new Date(timerData.startTime)
+              const minEndTime = new Date(startTime.getTime() + importedBoss.minRespawnMinutes * 60 * 1000)
+              const maxEndTime = new Date(startTime.getTime() + importedBoss.maxRespawnMinutes * 60 * 1000)
+
+              // 計算剩餘時間
+              const now = new Date()
+              const elapsedSeconds = Math.floor((now - startTime) / 1000)
+              const totalSeconds = importedBoss.minRespawnMinutes * 60
+              const timeRemaining = Math.max(0, totalSeconds - elapsedSeconds)
+
+              const timer = {
+                id: Date.now() + Math.random(),
+                boss: importedBoss,
+                channelName: timerData.channelName,
+                startTime: startTime,
+                minEndTime: minEndTime,
+                maxEndTime: maxEndTime,
+                timeRemaining: timeRemaining
+              }
+
+              activeTimers.value.push(timer)
+              successCount++
+            } else {
+              // 找到對應的 BOSS，使用現有資料創建計時器
+              const startTime = new Date(timerData.startTime)
+              const minEndTime = new Date(startTime.getTime() + boss.minRespawnMinutes * 60 * 1000)
+              const maxEndTime = new Date(startTime.getTime() + boss.maxRespawnMinutes * 60 * 1000)
+
+              // 計算剩餘時間
+              const now = new Date()
+              const elapsedSeconds = Math.floor((now - startTime) / 1000)
+              const totalSeconds = boss.minRespawnMinutes * 60
+              const timeRemaining = Math.max(0, totalSeconds - elapsedSeconds)
+
+              const timer = {
+                id: Date.now() + Math.random(),
+                boss: { ...boss },
+                channelName: timerData.channelName,
+                startTime: startTime,
+                minEndTime: minEndTime,
+                maxEndTime: maxEndTime,
+                timeRemaining: timeRemaining
+              }
+
+              activeTimers.value.push(timer)
+              successCount++
+            }
+          } catch (error) {
+            console.error('匯入單個計時器失敗:', error)
+            errors.push(`${timerData.bossName} (${timerData.channelName}): ${error.message}`)
+            errorCount++
+          }
+        }
+
+        // 保存到 localStorage
+        if (successCount > 0) {
+          saveTimersToStorage()
+        }
+
+        // 顯示結果訊息
+        let message = `匯入完成！\n\n✅ 成功：${successCount} 個計時器`
+        if (errorCount > 0) {
+          message += `\n❌ 失敗：${errorCount} 個計時器`
+          if (errors.length > 0) {
+            message += `\n\n失敗詳情：\n${errors.join('\n')}`
+          }
+        }
+        
+        alert(message)
+
+      } catch (error) {
+        console.error('匯入計時器失敗:', error)
+        alert(`匯入失敗：${error.message}`)
+      }
+    }
+
     return {
       bosses,
       activeTimers,
       currentTime,
       isDarkTheme,
+      showShareDialog,
+      showImportDialog,
+      selectedTimerForShare,
       addTimer,
       removeTimer,
       resetTimer,
-      toggleTheme
+      toggleTheme,
+      openShareDialog,
+      closeShareDialog,
+      importTimers
     }
   }
 }
