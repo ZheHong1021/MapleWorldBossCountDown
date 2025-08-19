@@ -49,7 +49,10 @@ export default {
     // 載入 BOSS 資料
     const loadBossData = async () => {
       try {
-        const response = await fetch('/data.json')
+        const basePath = import.meta.env.BASE_URL
+        const dataUrl = `${basePath}data.json`
+        const response = await fetch(dataUrl)
+        
         const data = await response.json()
         bosses.value = data.bosses
       } catch (error) {
