@@ -1,0 +1,213 @@
+{
+  "bosses": [
+    {
+      "id": "snowman",
+      "name": "雪毛怪人",
+      "minRespawnMinutes": 45,
+      "maxRespawnMinutes": 68,
+      "location": [
+        "雪人之谷"
+      ]
+    },
+    {
+      "id": "crazycat",
+      "name": "瘋狂喵z客",
+      "minRespawnMinutes": 120,
+      "maxRespawnMinutes": 540,
+      "location": [
+        "台北101：名人大道西部區域"
+      ]
+    },
+    {
+      "id": "blackwheelking",
+      "name": "黑輪王",
+      "minRespawnMinutes": 780,
+      "maxRespawnMinutes": 1020,
+      "location": [
+        "西門町：夜市徒步區7",
+        "西門町：夜市徒步區7-1"
+      ]
+    },
+    {
+      "id": "elijah",
+      "name": "艾利傑",
+      "minRespawnMinutes": 118,
+      "maxRespawnMinutes": 128,
+      "location": [
+        "天空之城：天空階梯 II"
+      ]
+    },
+    {
+      "id": "crimsonbalrog",
+      "name": "巴洛古",
+      "minRespawnMinutes": 405,
+      "maxRespawnMinutes": 540,
+      "location": [
+        "維多利亞：被詛咒的寺院"
+      ]
+    },
+    {
+      "id": "kenny",
+      "name": "肯德熊",
+      "minRespawnMinutes": 113,
+      "maxRespawnMinutes": 128,
+      "location": [
+        "桃花仙境：流浪熊的領土"
+      ]
+    },
+    {
+      "id": "ninefox",
+      "name": "九尾妖狐",
+      "minRespawnMinutes": 210,
+      "maxRespawnMinutes": 570,
+      "location": [
+        "童話村：狐狸山坡"
+      ]
+    },
+    {
+      "id": "graygolem",
+      "name": "葛雷金剛",
+      "minRespawnMinutes": 270,
+      "maxRespawnMinutes": 350,
+      "location": [
+        "地球防衛總部：葛雷之谷"
+      ]
+    },
+    {
+      "id": "zombieking",
+      "name": "殭屍蘑菇王",
+      "minRespawnMinutes": 195,
+      "maxRespawnMinutes": 225,
+      "location": [
+        "維多利亞：蘑菇王之墓"
+      ]
+    },
+    {
+      "id": "king",
+      "name": "蘑菇王",
+      "minRespawnMinutes": 210,
+      "maxRespawnMinutes": 240,
+      "location": [
+        "隱藏地圖：菇菇王出沒地"
+      ]
+    },
+    {
+      "id": "ghost",
+      "name": "書生幽靈",
+      "minRespawnMinutes": 150,
+      "maxRespawnMinutes": 300,
+      "location": [
+        "童話村：狐狸山坡"
+      ]
+    },
+    {
+      "id": "grimreaper",
+      "name": "厄運死神",
+      "minRespawnMinutes": 45,
+      "maxRespawnMinutes": 105,
+      "location": [
+        "冰原雪域：亡者之林Ⅲ"
+      ]
+    },
+    {
+      "id": "swampcrocodile",
+      "name": "沼澤巨鱷",
+      "minRespawnMinutes": 90,
+      "maxRespawnMinutes": 105,
+      "location": [
+        "維多利亞：危險的黑鱷魚1"
+      ]
+    },
+    {
+      "id": "snowwitch",
+      "name": "雪山魔女",
+      "minRespawnMinutes": 158,
+      "maxRespawnMinutes": 180,
+      "location": [
+        "冰原雪域：寒冰平原"
+      ]
+    },
+    {
+      "id": "giantmountainginseng",
+      "name": "巨大深山人蔘",
+      "minRespawnMinutes": 60,
+      "maxRespawnMinutes": 135,
+      "location": [
+        "靈藥幻境：豐饒的藥草田"
+      ]
+    },
+    {
+      "id": "meowmonster",
+      "name": "喵怪仙人",
+      "minRespawnMinutes": 150,
+      "maxRespawnMinutes": 170,
+      "location": [
+        "桃花仙境：妖怪之林"
+      ]
+    },
+    {
+      "id": "doll",
+      "name": "仙人娃娃",
+      "minRespawnMinutes": 158,
+      "maxRespawnMinutes": 180,
+      "location": [
+        "桃花仙境：上級修煉場"
+      ]
+    },
+    {
+      "id": "cuckooclock",
+      "name": "咕咕鐘",
+      "minRespawnMinutes": 68,
+      "maxRespawnMinutes": 90,
+      "location": [
+        "玩具城：時間之路<3>"
+      ]
+    },
+    {
+      "id": "underworldghost",
+      "name": "冥界幽靈",
+      "minRespawnMinutes": 45,
+      "maxRespawnMinutes": 60,
+      "location": [
+        "維多利亞：地鐵一號線[地區04]",
+        "維多利亞：地鐵二號線[地區03]"
+      ]
+    },
+    {
+      "id": "giantcrab",
+      "name": "巨居蟹",
+      "minRespawnMinutes": 45,
+      "maxRespawnMinutes": 60,
+      "location": [
+        "黃金海岸：海龜沙灘"
+      ]
+    },
+    {
+      "id": "zombiekong",
+      "name": "殭屍猴王",
+      "minRespawnMinutes": 38,
+      "maxRespawnMinutes": 45,
+      "location": [
+        "維多利亞：巫婆森林Ⅰ"
+      ]
+    },
+    {
+      "id": "treeking",
+      "name": "樹妖王",
+      "minRespawnMinutes": 23,
+      "maxRespawnMinutes": 30,
+      "location": [
+        "維多利亞：東方岩石山Ⅴ"
+      ]
+    },
+    {
+      "id": "redgemking",
+      "name": "紅寶王",
+      "minRespawnMinutes": 23,
+      "maxRespawnMinutes": 30,
+      "location": [
+        "維多利亞：海岸草叢Ⅲ"
+      ]
+    }
+  ]
+}

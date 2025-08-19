@@ -1,0 +1,305 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* 深色主題樣式 */
+body.dark-theme {
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+/* 淺色主題樣式 */
+body.light-theme {
+  color-scheme: light;
+  color: #213547;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 確保淺色主題下標題文字清晰 */
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
+body.light-theme h5,
+body.light-theme h6 {
+  color: #213547;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 320px;
+  min-height: 100vh;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding-top: 2rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* App 容器樣式 */
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem 2rem;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 重置可能影響佈局的元素 */
+* {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+/* 主標題樣式 */
+h1, h2 {
+  transition: color 0.3s ease;
+  margin: 1rem 0;
+}
+
+body.dark-theme h1,
+body.dark-theme h2 {
+  color: rgba(255, 255, 255, 0.87);
+  margin: 1rem 0;
+}
+
+body.light-theme h1,
+body.light-theme h2 {
+  color: #213547;
+  margin: 1rem 0;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0.5em;
+  box-sizing: border-box;
+}
+
+/* 按鈕基本樣式 */
+button {
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+/* 一般按鈕間距（排除特殊按鈕） */
+button:not(.start-timer-btn):not(.theme-toggle-btn):not(.btn-modern) {
+  margin: 0.5em;
+}
+
+/* 深色主題按鈕 */
+body.dark-theme button {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+body.dark-theme button:hover {
+  border-color: #646cff;
+}
+
+/* 淺色主題按鈕 */
+body.light-theme button {
+  background-color: #f9f9f9;
+  color: #213547;
+}
+
+body.light-theme button:hover {
+  border-color: #646cff;
+  background-color: #e9e9e9;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.timer-card {
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+/* 深色主題計時器卡片 */
+body.dark-theme .timer-card {
+  border: 1px solid #333;
+  background-color: #1a1a1a;
+}
+
+/* 淺色主題計時器卡片 */
+body.light-theme .timer-card {
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.boss-name {
+  font-size: 1.25rem;
+  color: #ffa500;
+  margin-bottom: 0.5rem;
+}
+
+.channel-name {
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* 深色主題頻道名稱 */
+body.dark-theme .channel-name {
+  color: #888;
+}
+
+/* 淺色主題頻道名稱 */
+body.light-theme .channel-name {
+  color: #666;
+}
+
+.timer-expired {
+  color: #ff6b6b;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.add-timer-form {
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.form-group {
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* 深色主題樣式 */
+body.dark-theme .add-timer-form {
+  background-color: #333;
+}
+
+body.dark-theme .form-group label {
+  color: #ccc;
+}
+
+/* 淺色主題表單樣式 */
+body.light-theme .add-timer-form {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+body.light-theme .form-group label {
+  color: #213547;
+  font-weight: 600;
+}
+
+/* 淺色主題表單元素 */
+body.light-theme .form-group input,
+body.light-theme .form-group select {
+  background-color: white;
+  color: #213547;
+  border-color: #ddd;
+}
+
+body.light-theme .form-group input:focus,
+body.light-theme .form-group select:focus {
+  border-color: #646cff;
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+}
+
+/* 深色主題表單元素 */
+body.dark-theme .form-group input,
+body.dark-theme .form-group select {
+  background-color: #2a2a2a;
+  color: white;
+  border-color: #555;
+}
+
+body.dark-theme .form-group input:focus,
+body.dark-theme .form-group select:focus {
+  border-color: #61dafb;
+  box-shadow: 0 0 0 2px rgba(97, 218, 251, 0.2);
+}
+
+/* 深色主題下拉選單選項樣式 */
+body.dark-theme select option {
+  background-color: #2a2a2a;
+  color: #ffffff;
+}
+
+/* 淺色主題下拉選單選項樣式 */
+body.light-theme select option {
+  background-color: #ffffff;
+  color: #213547;
+}
+
+/* 組件間通用樣式 - 確保主題切換正常 */
+body.light-theme .current-time {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #213547;
+  border: 1px solid #ddd;
+}
+
+body.dark-theme .current-time {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #61dafb;
+  border: none;
+}
+
+/* 確保所有組件的主題樣式 */
+body.dark-theme .add-timer-form {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .add-timer-form {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+}
+
